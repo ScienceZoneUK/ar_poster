@@ -70,6 +70,18 @@ function draw() {
   });
 }
 
+  // Check for touches and remove pumpkins (ghosts) if touched
+  for (let i = 0; i < touches.length; i++) {
+    let touchX = touches[i].x;
+    let touchY = touches[i].y;
+
+    // Use the same logic to detect if the touch is near any ghost
+    ghosts = ghosts.filter(ghost => {
+      let d = dist(touchX, touchY, ghost.x + 100, ghost.y + 100); // Center of ghost
+      return d > 100;  // Keep ghost if distance is greater than 100px (ghost's radius is 100)
+    });
+  }
+
 // Function to spawn new ghosts with random positions and speeds
 function spawn() {
   // Remove the oldest ghost if the array exceeds maxGhosts
@@ -78,8 +90,8 @@ function spawn() {
   }
 
   let ghost = {
-    x: random(0, width - 50),  // Random x position within canvas width
-    y: random(0, height - 50),  // Random y position within canvas height
+    x: random(0, width - 200),  // Random x position within canvas width
+    y: random(0, height - 200),  // Random y position within canvas height
     speed: random(1, 3)  // Random speed between 1 and 3
   };
   ghosts.push(ghost);  // Add new ghost to the array
@@ -92,7 +104,9 @@ function mousePressed() {
 
 // Function to remove a ghost when tapped (touch)
 function touchStarted() {
-  killPumpkin(touchX, touchY);
+  for (let i = 0; i < touches.length; i++) {
+    killPumpkin(touches[i].x, touches[i].y);
+  }
   return false;  // Prevent default touch behavior
 }
 
