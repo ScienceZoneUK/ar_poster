@@ -48,8 +48,8 @@ function draw() {
     if (textY > -200) {  // Move until the text is off the top of the canvas
       textY -= 2;  // Move text upward
       text("Spooky HalfTerm Workshops", width / 2, textY);
-      text("Now Available at Science Zone", width / 2, textY + 40);
-      text("First, Kill the Pumpkins!", width / 2, textY + 80);
+      text("Now Available at Science Zone", width / 2, textY + txtOff);
+      text("First, Kill the Pumpkins!", width / 2, textY + txtOff*2);
     }
   }
 
