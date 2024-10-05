@@ -26,7 +26,7 @@ function setup() {
 
   // Text settings
   textFont(spookyFont);
-  textSize(60);
+  textSize(55);
   fill(50, 205, 50);  // Lime green color for the text
   textAlign(CENTER);
 
