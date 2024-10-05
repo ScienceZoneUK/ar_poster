@@ -6,7 +6,7 @@ let ghosts = [];
 let maxGhosts = 30;  // Maximum number of ghosts allowed
 
 let textY = 600;  // Starting Y position of the text
-let txtOff = 50;
+let txtOff = 65;
 let textVisible = true;  // Flag to check if text is still visible
 let textStartTime;  // Variable to store the time when the text starts
 
