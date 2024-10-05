@@ -5,7 +5,8 @@ let spawnInterval = 1000;
 let ghosts = [];
 let maxGhosts = 30;  // Maximum number of ghosts allowed
 
-let textY = 100;  // Starting Y position of the text
+let textY = 600;  // Starting Y position of the text
+let txtOff = 50;
 let textVisible = true;  // Flag to check if text is still visible
 let textStartTime;  // Variable to store the time when the text starts
 
@@ -21,12 +22,11 @@ function setup() {
   pixelDensity(1)
   background(220);
   image(posterImg, 0, 0);
-
   setInterval(spawn, spawnInterval); // Spawn a new ghost every second
 
   // Text settings
   textFont(spookyFont);
-  textSize(24);
+  textSize(46);
   fill(50, 205, 50);  // Lime green color for the text
   textAlign(CENTER);
 
@@ -41,8 +41,8 @@ function draw() {
   if (millis() - textStartTime < 3000) {
     // Display the introductory text at the start for 3 seconds
     text("Spooky HalfTerm Workshops", width / 2, textY);
-    text("Now Available at Science Zone", width / 2, textY + 40);
-    text("First, Kill the Pumpkins!", width / 2, textY + 80);
+    text("Now Available at Science Zone", width / 2, textY + txtOff);
+    text("First, Kill the Pumpkins!", width / 2, textY + txtOff*2);
   } else {
     // Gradually move the text off the screen by reducing the Y position
     if (textY > -200) {  // Move until the text is off the top of the canvas
@@ -65,7 +65,7 @@ function draw() {
     }
 
     tint(255, 255, 100);  // Apply yellowish tint to the ghost
-    image(img, ghost.x, ghost.y, 50, 50);  // Draw the ghost
+    image(img, ghost.x, ghost.y, 100, 100);  // Draw the ghost
     noTint();  // Remove the tint after drawing
   });
 }
