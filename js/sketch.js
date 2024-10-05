@@ -26,7 +26,7 @@ function setup() {
 
   // Text settings
   textFont(spookyFont);
-  textSize(46);
+  textSize(60);
   fill(50, 205, 50);  // Lime green color for the text
   textAlign(CENTER);
 
@@ -65,7 +65,7 @@ function draw() {
     }
 
     tint(255, 255, 100);  // Apply yellowish tint to the ghost
-    image(img, ghost.x, ghost.y, 100, 100);  // Draw the ghost
+    image(img, ghost.x, ghost.y, 200, 200);  // Draw the ghost
     noTint();  // Remove the tint after drawing
   });
 }
