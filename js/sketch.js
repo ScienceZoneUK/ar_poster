@@ -19,7 +19,7 @@ function preload() {
 
 function setup() {
   createCanvas(848, 1200, document.getElementById('canvas-ar'))
-  pixelDensity(1)
+  pixelDensity(1);
   background(220);
   image(posterImg, 0, 0);
   setInterval(spawn, spawnInterval); // Spawn a new ghost every second
@@ -42,7 +42,7 @@ function draw() {
     // Display the introductory text at the start for 3 seconds
     text("Spooky HalfTerm Workshops", width / 2, textY);
     text("Now Available at Science Zone", width / 2, textY + txtOff);
-    text("First, Kill the Pumpkins!", width / 2, textY + txtOff*2);
+    text("First, Kill the Pumpkins!", width / 2, textY + txtOff * 2);
   } else {
     // Gradually move the text off the screen by reducing the Y position
     if (textY > -200) {  // Move until the text is off the top of the canvas
@@ -85,10 +85,21 @@ function spawn() {
   ghosts.push(ghost);  // Add new ghost to the array
 }
 
-// Function to remove a ghost when clicked
+// Function to remove a ghost when clicked (mouse)
 function mousePressed() {
+  killPumpkin(mouseX, mouseY);
+}
+
+// Function to remove a ghost when tapped (touch)
+function touchStarted() {
+  killPumpkin(touchX, touchY);
+  return false;  // Prevent default touch behavior
+}
+
+// Function to check if a pumpkin (ghost) is clicked or tapped
+function killPumpkin(x, y) {
   ghosts = ghosts.filter(ghost => {
-    let d = dist(mouseX, mouseY, ghost.x + 25, ghost.y + 25); // Check if mouse is near ghost
-    return d > 25;  // Keep ghost if distance is greater than 25 (radius of 50px ghost)
+    let d = dist(x, y, ghost.x + 100, ghost.y + 100); // Check if touch/click is near ghost
+    return d > 100;  // Keep ghost if distance is greater than 100px (radius of 200px ghost)
   });
 }
