@@ -13,7 +13,7 @@ let textStartTime;  // Variable to store the time when the text starts
 
 function preload() {
   img = loadImage("pumkin.png");
-  posterImg = loadImage("poster.png");
+  posterImg = loadImage("poster.jpg");
   spookyFont = loadFont("Minecrafter.ttf"); // Load the custom font
 }
 
